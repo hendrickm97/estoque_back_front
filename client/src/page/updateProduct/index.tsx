@@ -15,7 +15,7 @@ const UpdateProduct = () => {
     const handleSubmit = async (e: { preventDefault: () => void }) => {
         e.preventDefault()
         await axios
-            .post('http://localhost:8800/', {
+            .post('https://estoque-server.vercel.app/', {
                 nome: nome,
                 categoria: categoria,
                 quantidade: quantidade,

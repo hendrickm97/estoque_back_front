@@ -30,9 +30,8 @@ const DataTable = ({ dataHeader, dataBody }: DataProps) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {dataBody.map((item, index) => (
-                        <TableRow key={index}>
-                            <StyledTableCell>{item.id}</StyledTableCell>
+                    {dataBody.map((item) => (
+                        <TableRow key={item.id}>
                             <StyledTableCell>{item.nome}</StyledTableCell>
                             <StyledTableCell>{item.categoria}</StyledTableCell>
                             <StyledTableCell>{item.quantidade}</StyledTableCell>

@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Stack } from '@mui/material'
 import DataTable from '../../component/table'
 import { StyledTextField } from '../../component/textField'
 import { StyledButton } from '../../component/button'
+import axios from 'axios'
 
 export type Data = {
     id: number
     nome: string
     categoria: string
-    quantidade: number
-    valor: number
+    quantidade: string
+    valor: string
 }
 
 function Home() {
-    const dataHeader = ['Id', 'Nome', 'Categoria', 'Quantidade', 'Valor']
+    const dataHeader = ['Nome', 'Categoria', 'Quantidade', 'Valor']
     const [dataBody, setDataBody] = useState<Data[]>([])
     const [busca, setBuscar] = useState('')
 
-    useEffect(() => {
-        fetch('http://localhost:8800/')
-            .then((res) => res.json())
-            .then((res) => setDataBody(res))
-    }, [])
+    axios
+        .get('https://estoque-server.vercel.app')
+        .then((res) => res.data)
+        .then((res) => setDataBody(res.data))
 
     return (
         <Stack sx={{ padding: '20px' }} spacing={2} direction={'column'}>
